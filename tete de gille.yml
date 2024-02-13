@@ -38,7 +38,7 @@
                       <input type="text" name="q" placeholder="Recherche Google">
                       <input type="submit" value="Rechercher">
                   </form>
-                  <img src="/var/gille.gif" alt="Animation GIF">
+                  <img src="/var/gille.gif" alt="GIF">
               </div>
           </body>
           </html>
