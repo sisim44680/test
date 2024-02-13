@@ -1,4 +1,3 @@
-
 - name: Installer Apache2 et créer une page web
   hosts: all
 
