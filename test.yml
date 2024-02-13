@@ -1,13 +1,53 @@
-# fichier_creation_dossier.yml
-
 ---
-- name: Créer un dossier dans /var
-  hosts: test
-  become: yes  # Utiliser le privilège administrateur (sudo)
 
   tasks:
-    - name: Créer le dossier dans /var
-      file:
-        path: "/var/nom_du_dossier"  # Remplacez "nom_du_dossier" par le nom que vous souhaitez
-        state: directory
-        mode: 0755  # Les permissions du dossier
+    - name: Mise à jour du gestionnaire de paquets
+      apt:
+        update_cache: yes
+
+    - name: Installation des dépendances
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apache2
+        - php
+        - php-cli
+        - php-mbstring
+        - php-curl
+        - php-gd
+        - php-json
+        - php-ldap
+        - php-mysql
+        - php-xml
+        - php-zip
+        - tftpd-hpa
+        - nfs-kernel-server
+        - vsftpd
+        - unzip
+
+    - name: Téléchargement de FOG
+      get_url:
+        url: "https://github.com/FOGProject/fogproject/archive/master.zip"
+        dest: "/tmp/fog.zip"
+
+    - name: Extraction de l'archive
+      unzip:
+        src: "/tmp/fog.zip"
+        dest: "/opt/"
+        remote_src: yes
+
+    - name: Déplacement des fichiers FOG
+      command: mv /opt/fogproject-master /opt/fog
+
+    - name: Configuration de FOG
+      template:
+        src: "/opt/fog/config.php"
+        dest: "/opt/fog/lib/fog/config.php"
+      notify: Restart Apache
+
+  handlers:
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
