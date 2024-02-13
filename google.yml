@@ -23,29 +23,23 @@
       become: yes
       copy:
         content: |
-        - name: Créer le fichier index.html avec un formulaire de recherche Google-like
-  become: yes
-  copy:
-    content: |
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Ma Page Web</title>
-      </head>
-      <body>
-          <div style="text-align: center; margin-top: 100px;">
-              <h1>Coucou, je suis une page web</h1>
-              <form action="https://www.google.com/search" method="GET">
-                  <input type="text" name="q" placeholder="Recherche Google">
-                  <input type="submit" value="Rechercher">
-              </form>
-          </div>
-      </body>
-      </html>
-    dest: /var/www/html/index.html
-
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Ma Page Web</title>
+          </head>
+          <body>
+              <div style="text-align: center; margin-top: 100px;">
+                  <h1>Coucou, je suis une page web</h1>
+                  <form action="https://www.google.com/search" method="GET">
+                      <input type="text" name="q" placeholder="Recherche Google">
+                      <input type="submit" value="Rechercher">
+                  </form>
+              </div>
+          </body>
+          </html>
         dest: /var/www/html/index.html
 
     - name: Redémarrer Apache2
@@ -53,3 +47,4 @@
       service:
         name: apache2
         state: restarted
+
