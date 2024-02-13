@@ -35,7 +35,7 @@
         dest: "/tmp/fog.zip"
 
     - name: Extraction de l'archive
-      unzip:
+      ansible.builtin.unarchive:
         src: "/tmp/fog.zip"
         dest: "/opt/"
         remote_src: yes
