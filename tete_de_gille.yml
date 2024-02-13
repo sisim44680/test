@@ -33,13 +33,11 @@
           </head>
           <body>
               <div style="text-align: center; margin-top: 100px;">
-                  <img src="/gille_tourne.gif" alt="Before GIF" width="320" height="240">
                   <h1>
                       <img src="/gille_tourne.gif" alt="Left of Title GIF" width="100" height="100">
                       Coucou, je suis une page web
                       <img src="/gille_tourne.gif" alt="Right of Title GIF" width="100" height="100">
                   </h1>
-                  <img src="/gille_tourne.gif" alt="After GIF" width="320" height="240">
                   <form action="https://www.google.com/search" method="GET">
                       <input type="text" name="q" placeholder="Recherche Google">
                       <input type="submit" value="Rechercher">
