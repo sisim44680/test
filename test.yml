@@ -1,6 +1,6 @@
 ---
 - name: Installation de FOG
-  hosts: test
+  hosts: 10.101.130.48
   become: yes
 
   tasks:
