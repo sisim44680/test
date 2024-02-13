@@ -1,6 +1,32 @@
-- name: Hello World Sample
+- name: Installer Apache2 et créer une page web
   hosts: all
+
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+    - name: Mise à jour du cache des paquets
+      become: yes
+      apt:
+        update_cache: yes
+
+    - name: Installer Apache2
+      become: yes
+      apt:
+        name: apache2
+        state: present
+
+    - name: Créer le répertoire pour le site web
+      become: yes
+      file:
+        path: /var/www/html
+        state: directory
+
+    - name: Créer le fichier index.html
+      become: yes
+      copy:
+        content: "Coucou, je suis une page web\n"
+        dest: /var/www/html/index.html
+
+    - name: Redémarrer Apache2
+      become: yes
+      service:
+        name: apache2
+        state: restarted
