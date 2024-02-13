@@ -1,6 +1,6 @@
 ---
 - name: Installer Apache2 et créer une page web
-  hosts: test
+  hosts: 172.26.91.155
 
   tasks:
     - name: Mise à jour du cache des paquets
