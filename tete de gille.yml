@@ -1,6 +1,6 @@
 - name: Installer Apache2 et créer une page web avec GIF
-  hosts: VOTRE_HOTE   # Remplacez VOTRE_HOTE par le nom de votre hôte ou groupe d'hôtes
-
+  hosts: all
+  
   tasks:
     - name: Mise à jour du cache des paquets
       become: yes
