@@ -1,0 +1,13 @@
+# fichier_creation_dossier.yml
+
+---
+- name: Créer un dossier dans /var
+  hosts: localhost
+  become: yes  # Utiliser le privilège administrateur (sudo)
+
+  tasks:
+    - name: Créer le dossier dans /var
+      file:
+        path: "/var/nom_du_dossier"  # Remplacez "nom_du_dossier" par le nom que vous souhaitez
+        state: directory
+        mode: 0755  # Les permissions du dossier
