@@ -1,4 +1,7 @@
 ---
+- name: Installation de FOG
+  hosts: test
+  become: yes
 
   tasks:
     - name: Mise à jour du gestionnaire de paquets
